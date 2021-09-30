@@ -1,4 +1,4 @@
-import {cartSpan} from './add-to-cart.js';
+import {cartSpan, removeError} from './add-to-cart.js';
 import {localStorage} from './local-storage.js';
 import { getLocalStorageItem } from './local-storage.js';
 import {setAmountToCartSpan} from './on-load.js';
@@ -43,8 +43,13 @@ function cartAdd(e) {
     })
 
     if (total > 500) {
-        alert("ERROR: You cannot add more than $500 worth of items to your cart. The selected item will not be added.")
-        console.log("ERROR PASSED 500");
+        document.body.classList.add('error-active');
+        window.addEventListener('keydown', (e) => {
+           if(e.code !== 'Escape') {
+               return;
+           }
+           removeError();
+        })
         okay = false;
     }
 

@@ -22,7 +22,7 @@ errorOverlay.addEventListener('click', (e) => {
     removeError();
 });
 
-function removeError() {
+export function removeError() {
     document.body.classList.remove('error-active');
 }
 
