@@ -1,6 +1,5 @@
 import { localStorage } from './local-storage.js';
 import { getLocalStorageItem } from './local-storage.js';
-// import { setAmountToCartSpan } from './on-load.js';
 let allBtns = document.querySelectorAll('.js_add-to-cart');
 export const cartSpan = document.querySelector('.js_cart__span');
 export const successMessageSpan = document.querySelector('.js_success-product-name');
@@ -26,7 +25,6 @@ export function removeError() {
     document.body.classList.remove('error-active');
 }
 
-let count = 0;
 
 function addToCart(e) {
     const btn = e.currentTarget;
