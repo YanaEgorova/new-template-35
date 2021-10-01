@@ -51,7 +51,7 @@ v216c0,11.046,8.954,20,20,20s20-8.954,20-20V276h216c11.046,0,20-8.954,20-20C512,
            </button>
        </div>
        <div class="prod__price-box">
-       <span class="prod__price js_prod__price">$ ${product.price}</span>
+       <span class="prod__price js_prod__price">$ ${(product.price).toFixed(2)}</span>
        </div>
        <div class="add__btn-box">
        <p class="text success-message js_success-message">Success! You have added <span class="js_success-product-name"></span> to your shopping cart!</p>

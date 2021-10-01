@@ -8,7 +8,7 @@ export const tableRowTemplate = (product) => {
       <p>${product.quantity}</p>
     </td>
     <td class="text">
-      <p>${`$${product.price}`}</p>
+      <p>${`$${(product.price).toFixed(2)}`}</p>
     </td>
     <td class="text">${(product.quantity * product.price).toFixed(2)}</td>
     <td>
