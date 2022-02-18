@@ -1,11 +1,11 @@
-const WEBSITE_NAME = 'website name';
-const WEBSITE_URL = 'website url';
-const WEBSITE_CORP = 'website corp';
-const WEBSITE_PHONE = 'website phone';
-const WEBSITE_EMAIL = 'website email';
-const WEBSITE_ADDRESS = 'website address';
-const WEBSITE_RETURN_ADDRESS = 'website return address';
-const WEBSITE_DESCRIPTOR = 'website desc';
+const WEBSITE_NAME = 'Soft World Toy';
+const WEBSITE_URL = 'softworldtoy.com';
+const WEBSITE_CORP = 'Mayer Media Grp Inc';
+const WEBSITE_PHONE = '844 406 0494';
+const WEBSITE_EMAIL = 'support@softworldtoy.com';
+const WEBSITE_ADDRESS = '1130 Bedford Ave Num 56, Brooklyn, NY 11216';
+const WEBSITE_RETURN_ADDRESS = '1218 E Broadway #317 Long Beach CA 90802, USA';
+const WEBSITE_DESCRIPTOR = '8444060494softworldtoy';
 
 let websiteName = document.querySelectorAll('.js_website-name');
 let websiteUrl = document.querySelectorAll('.js_website-url');
@@ -73,7 +73,7 @@ function setInformation(array, info) {
 
 function setWebsiteHref(array, info) {
     array.forEach(item => {
-       item.hasAttribute('href') && item.setAttribute('href', info);
+        item.hasAttribute('href') && item.setAttribute('href', `http://${info}`);
     });
 }
 

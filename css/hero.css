@@ -1,12 +1,12 @@
 .hero__wrapper {
-    background-color: #f4d03f;
+    background-color: var(--fourth-brand-color);
 }
 .hero {
     padding: 15rem 0;
 }
 
 .words span {
-  color: #f4d03f;
+  color: var(--fourth-brand-color);
   font-family: var(--main-title-font);
   text-transform: uppercase;
   font-size: 6.5rem;

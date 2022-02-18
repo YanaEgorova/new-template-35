@@ -1,38 +1,76 @@
-const cardsContainer = document.querySelector('.js_card-box-dropdown');
-const cardsName = document.querySelectorAll('.js_card-name');
-const cardsImg = document.querySelectorAll('.js_card-img');
+const cardsBox = document.querySelector('.js__form-card-box');
+const cardsBoxVisible = document.querySelector('.js__form-cards-visible');
+const cardsBoxHidden = document.querySelector('.js__form-cards-hidden');
 
-cardsName.forEach(card => {
-    card.addEventListener('click', toggleCard);
-});
+const CARDS = [
+    { 
+        cardName: 'visa',
+        cardImgUrl: './img/icons/visa.png',
+        cardIsActive: true,
+    },
+    { 
+        cardName: 'mastercard',
+        cardImgUrl: './img/icons/mastercard.png',
+        cardIsActive: false,
+    },
+    { 
+        cardName: 'discover',
+        cardImgUrl: './img/icons/discover.png',
+        cardIsActive: false,
+    },
+]
 
-function toggleCard(e) {
-    const button = e.currentTarget;
+cardsBoxVisible.innerHTML = `
+  <div class="form__payment-card-text-box" id="${CARDS[0].cardName}">
+    <p class="text">${CARDS[0].cardName}</p>
+    <img src="${CARDS[0].cardImgUrl}" alt="icon" class="form__payment-card-icon">
+  </div>
+`;
 
-    if(!button.classList.contains('hidden-btn')) {
-        cardsName.forEach(btn => {
-            if(btn.classList.contains('hidden-btn')) {
-                btn.classList.add('hidden-btn-vis');
-            }
-        })
-       return; 
+CARDS.forEach(card => {
+    if(!card.cardIsActive) {
+   cardsBoxHidden.insertAdjacentHTML('beforeend', `
+  <div class="form__payment-card-text-box" id="${card.cardName}">
+    <p class="text">${card.cardName}</p>
+    <img src="${card.cardImgUrl}" alt="icon" class="form__payment-card-icon">
+  </div>
+`);
     }
+})
 
-    button.classList.remove('hidden-btn-vis');
-    button.classList.remove('hidden-btn');
-    const buttonId = button.getAttribute('id');
 
-    cardsName.forEach(btn => {
-        if(btn.getAttribute('id') !== buttonId) {
-            btn.classList.add('hidden-btn');
-            cardsImg.forEach(img => {
-               if(img.getAttribute('data-id') !== buttonId) {
-                   img.classList.add('hidden');
-                   return;
-               } 
-               img.classList.remove('hidden');
-            })
-            
-        }
-    })
+cardsBoxVisible.addEventListener('click', toggleHiddenCards);
+cardsBoxHidden.addEventListener('click', setActiveCard);
+
+function toggleHiddenCards () {
+    cardsBox.classList.toggle('active-box');
+}
+
+function setActiveCard(e) {
+  const arr = [];
+  
+  CARDS.forEach(card => {
+    
+    if(e.target.getAttribute('id') === card.cardName) {
+
+    cardsBoxVisible.innerHTML = `
+  <div class="form__payment-card-text-box" id="${card.cardName}">
+    <p class="text">${card.cardName}</p>
+    <img src="${card.cardImgUrl}" alt="icon" class="form__payment-card-icon">
+  </div>
+   `;
+
+    } else {
+
+    arr.push(`
+    <div class="form__payment-card-text-box" id="${card.cardName}">
+      <p class="text">${card.cardName}</p>
+      <img src="${card.cardImgUrl}" alt="icon" class="form__payment-card-icon">
+    </div>
+  `);
+    }
+  })
+
+   cardsBoxHidden.innerHTML = arr.join('');
+
 }

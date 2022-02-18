@@ -14,7 +14,7 @@
   font-family: var(--title-font);
   text-transform: uppercase;
   font-size: 2.5rem;
-  background-color: #f4d03f;
+  background-color: var(--fourth-brand-color);
   padding: 0.5rem;
 }
 .footer .list {
@@ -58,6 +58,7 @@
 
   .footer__block .list, .footer__block--df {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   .footer__block--jus .list {
